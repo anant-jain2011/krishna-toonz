@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.c-img {
+  @apply w-96 h-48 object-cover object-center;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.blocks {
+  background: url('https://wallpaperchain.com/wp-content/uploads/2022/01/naruto-4-1536x864.jpg') no-repeat;
+  background-color: rgba(255, 255, 255, 0.6);
+  background-size: cover;
+  z-index: -1;
+  filter: blur(1px);
+  min-height: calc(100vh - 4.75rem);
+  object-fit: cover;
+  object-position: top;
+}
+
+.font-poke {
+  font-family: "Pokemon";
+  letter-spacing: 1px;
+  font-size: 28px;
+  margin-right: -10px;
+}
+
+@font-face {
+  font-family: 'Pokemon';
+  src: url('/font.ttf') format('truetype');
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
