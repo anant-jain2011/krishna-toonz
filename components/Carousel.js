@@ -4,8 +4,8 @@ const Carousel = (duration) => {
 
     useEffect(() => {
         // imgs[0].clientWidth;
-        const imgs = document.querySelectorAll(".c-img");
-
+        const imgs = document.querySelectorAll("#c-img");
+        
         //Buttons
         const prevBtn = document.querySelector("#prevBtn");
         const nextBtn = document.querySelector("#nextBtn");
@@ -19,7 +19,6 @@ const Carousel = (duration) => {
 
         //Button Listeners
         nextBtn.addEventListener("click", () => {
-            imgs[0].transition = "all " + duration + "ms ease-in-out";
             counter++;
             if (counter == 4) counter = 0;
 
@@ -27,17 +26,20 @@ const Carousel = (duration) => {
             console.log(size, counter);
 
             size = imgs[counter].clientWidth;
+
+            imgs[0].style.transition = "all " + duration + " 1.5s ease";
         });
 
         prevBtn.addEventListener("click", () => {
-            imgs[0].transition = "all " + duration + "ms ease-in-out";
             counter--;
             if (counter < 0) counter = 3;
 
             imgs[0].style.marginLeft = (-size * counter) + "px";
             console.log(size, counter);
-            
+
             size = imgs[counter].clientWidth;
+
+            imgs[0].style.transition = "all " + duration + " 1.5s ease";
         });
 
         // carousel.addEventListener("transitionend", () => {
@@ -55,20 +57,20 @@ const Carousel = (duration) => {
     }, []);
 
     return (
-        <div className="carousel w-full flex justify-center h-48 border border-black">
-            <span id="prevBtn" className="relative left-0 top-0 bottom-0 w-1/6 bg-gray-500 bg-opacity-50 hover:bg-opacity-75 focus:bg-opacity-75 focus:outline-none">Prev</span>
+        <div className="carousel w-full flex justify-center h-96 border border-black">
+            <div className="flex overflow-hidden w-[48rem] relative">
+                <span id="prevBtn" className="absolute left-0 top-0 bottom-0 w-1/6 bg-gray-500 bg-opacity-10 hover:bg-opacity-20 focus:bg-opacity-20 focus:outline-none text-black text-4xl flex justify-center items-center">&lt;</span>
 
-            <div className="flex overflow-hidden w-96">
-                <img src="/ss3.png" alt="photo1" className="c-img" />
+                <img src="/Zoro.jpg" className="w-full h-auto object-cover object-center" id="c-img" />
 
-                <img src="/ss2.png" alt="photo2" className="c-img" />
+                <img src="/ss2.png" alt="photo2" className="w-full h-auto object-cover object-center" id="c-img" />
 
-                <img src="/Screenshot (40).png" alt="photo3" className="c-img" />
+                <img src="/Screenshot (40).png" alt="photo3" className="w-full h-auto object-cover object-center" id="c-img" />
 
-                <img src="https://via.placeholder.com/400x200/" alt="photo4" className="c-img" />
+                <img src="https://via.placeholder.com/400x200/" alt="photo4" className="w-full h-auto object-cover object-center" id="c-img" />
+
+                <span id="nextBtn" className="absolute right-0 top-0 bottom-0 w-1/6 bg-gray-500 bg-opacity-10 hover:bg-opacity-20 focus:bg-opacity-20 focus:outline-none text-black text-4xl flex justify-center items-center">&gt;</span>
             </div>
-
-            <span id="nextBtn" className="relative right-0 top-0 bottom-0 w-1/6 bg-gray-500 bg-opacity-50 hover:bg-opacity-75 focus:bg-opacity-75 focus:outline-none">Next</span>
         </div>
     )
 }
